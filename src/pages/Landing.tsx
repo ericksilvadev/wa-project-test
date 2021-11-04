@@ -1,13 +1,15 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { Button, TextField } from '@material-ui/core';
 
+import { QuizContext } from '../context/quiz';
 import logo from '../images/logo.svg';
 
 const Landing = () => {
-  const [quantity, setQuantity] = useState<number | null>(null);
+  const { quantity, setQuantity } = useContext(QuizContext);
+  const navigate = useNavigate();
 
   const validationSchema = yup.object({
     quantity: yup
@@ -26,6 +28,7 @@ const Landing = () => {
     validationSchema,
     onSubmit: (values) => {
       setQuantity(values.quantity);
+      navigate('game');
     },
   });
 
@@ -47,6 +50,7 @@ const Landing = () => {
             onChange={formik.handleChange}
             error={formik.touched.quantity && Boolean(formik.errors.quantity)}
             helperText={formik.touched.quantity && formik.errors.quantity}
+            autoComplete="no"
           />
           <Button
             className="next-btn"
@@ -56,7 +60,7 @@ const Landing = () => {
               Boolean(formik.errors.quantity) || !formik.values.quantity
             }
           >
-            <Link to="game">Next</Link>
+            Next
           </Button>
         </form>
       </main>
