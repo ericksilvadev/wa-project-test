@@ -41,7 +41,7 @@ const Landing = () => {
         Quiz
       </h1>
       <main>
-        <h2>Choose the quantity of questions</h2>
+        <h2>Select the amount of questions</h2>
         <form onSubmit={formik.handleSubmit}>
           <TextField
             className="qty-input"
@@ -67,7 +67,7 @@ const Landing = () => {
         </form>
         {lastScore && (
           <Button variant="contained">
-            <Link to="last-game">Last game</Link>
+            <Link to="game/resume">Last game</Link>
           </Button>
         )}
       </main>

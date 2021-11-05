@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import { QuizContext } from '../context/quiz';
+import { Loading } from '../components';
 
 const StartGame = () => {
   const { setQuestions, quantity, questions } = useContext(QuizContext);
@@ -18,7 +19,7 @@ const StartGame = () => {
     fetchQuestions();
   }, []);
 
-  if (!questions.length) return <h1>loading</h1>;
+  if (!questions.length) return <Loading />;
 
   return (
     <ButtonGroup className="game-buttons" variant="contained">

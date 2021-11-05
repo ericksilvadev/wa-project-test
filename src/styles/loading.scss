@@ -1,0 +1,46 @@
+.loading-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  .dot {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0.5rem;
+    border-radius: 50%;
+    background: $primary;
+
+    animation: loading ease-in-out infinite 0.8s;
+
+    &.a {
+      animation-delay: 0s;
+    }
+    &.b {
+      animation-delay: 0.1s;
+    }
+    &.c {
+      animation-delay: 0.2s;
+    }
+    &.d {
+      animation-delay: 0.3s;
+    }
+    &.e {
+      animation-delay: 0.4s;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.2rem);
+  }
+  100% {
+    transform: translateY(0rem);
+  }
+}
