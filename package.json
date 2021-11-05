@@ -4,6 +4,7 @@
   "homepage": "https://ericksilvadev.github.io/wa-project-test/",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "build": "tsc && vite build",
     "serve": "vite preview"
