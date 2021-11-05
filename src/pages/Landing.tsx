@@ -1,17 +1,23 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
-import * as yup from 'yup';
 import { Button, TextField } from '@material-ui/core';
+import axios from 'axios';
+import * as yup from 'yup';
 
 import { QuizContext } from '../context/quiz';
 import logo from '../images/logo.svg';
 
 const Landing = () => {
-  const { quantity, setQuantity } = useContext(QuizContext);
+  const { quantity, setQuantity, setQuestions } = useContext(QuizContext);
   const navigate = useNavigate();
 
   const lastScore = localStorage.getItem('score');
+
+  const fetchQuestions = async (qty: number | string) => {
+    const { data } = await axios.get(`https://opentdb.com/api.php?amount=${qty}`);
+    setQuestions(data.results);
+  };
 
   const validationSchema = yup.object({
     quantity: yup
@@ -31,6 +37,7 @@ const Landing = () => {
     onSubmit: (values) => {
       setQuantity(values.quantity);
       navigate('game');
+      fetchQuestions(values.quantity);
     },
   });
 
