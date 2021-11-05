@@ -6,21 +6,13 @@ import { QuizContext } from '../context/quiz';
 import { Loading } from '../components';
 
 const StartGame = () => {
-  // const [storageAnswers, setStorageAnswers] = useState('');
   const { questions, setUserAnswers } = useContext(QuizContext);
 
   useEffect(() => {
-    // const getStorage = localStorage.getItem('score');
-    // getStorage ? setStorageAnswers(getStorage) : null;
-    // localStorage.clear();
     setUserAnswers([]);
   }, []);
 
-  // const handleCancel = () => {
-  //   localStorage.setItem('score', storageAnswers);
-  // };
-
-  if (!questions) return <Loading />;
+  if (!questions.length) return <Loading />;
 
   return (
     <ButtonGroup className="game-buttons" variant="contained">
