@@ -3,6 +3,7 @@ $text-base: rgb(100, 100, 100);
 $title: black;
 $error-light: rgb(255, 88, 88);
 $error: rgb(255, 62, 62);
+$success: rgb(71, 224, 71);
 
 * {
   margin: 0;
@@ -18,10 +19,18 @@ body {
   background: #f3f3f3;
 }
 
+img::selection {
+  background: none;
+}
+
 @mixin link-btn {
   background: $primary;
+  padding: 0;
+  // height: 3.5rem;
+  font-size: 1rem;
 
   a {
+    padding: 0.8rem 2rem;
     color: white;
     width: 100%;
     height: 100%;

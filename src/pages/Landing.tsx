@@ -11,6 +11,8 @@ const Landing = () => {
   const { quantity, setQuantity } = useContext(QuizContext);
   const navigate = useNavigate();
 
+  const lastScore = localStorage.getItem('score');
+
   const validationSchema = yup.object({
     quantity: yup
       .number()
@@ -63,6 +65,11 @@ const Landing = () => {
             Next
           </Button>
         </form>
+        {lastScore && (
+          <Button variant="contained">
+            <Link to="last-game">Last game</Link>
+          </Button>
+        )}
       </main>
     </div>
   );

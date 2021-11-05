@@ -6,7 +6,7 @@ import axios from 'axios';
 import { QuizContext } from '../context/quiz';
 
 const StartGame = () => {
-  const { setQuestions, quantity } = useContext(QuizContext);
+  const { setQuestions, quantity, questions } = useContext(QuizContext);
 
   const fetchQuestions = async () => {
     const { data } = await axios.get(
@@ -17,6 +17,8 @@ const StartGame = () => {
   useEffect(() => {
     fetchQuestions();
   }, []);
+
+  if (!questions.length) return <h1>loading</h1>;
 
   return (
     <ButtonGroup className="game-buttons" variant="contained">
