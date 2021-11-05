@@ -38,13 +38,14 @@
     }
 
     form {
-      margin-bottom: 10rem;
+      margin-bottom: 8rem;
 
       display: flex;
       flex-direction: column;
 
       input {
         height: 1.2rem;
+        width: 18rem;
       }
 
       button {
@@ -56,5 +57,9 @@
         @include link-btn;
       }
     }
+  }
+
+  .latest-game {
+    @include link-btn;
   }
 }

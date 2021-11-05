@@ -62,6 +62,7 @@
 
     .next-btn {
       @include link-btn;
+      width: 12rem;
 
       &:disabled {
         color: rgba(0, 0, 0, 0.26);

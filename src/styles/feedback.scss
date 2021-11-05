@@ -1,0 +1,102 @@
+.feedback-page {
+  width: 100vw;
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    text-align: center;
+    color: $title;
+  }
+
+  h2 {
+    width: 80%;
+    max-width: 900px;
+    .score {
+      color: $primary;
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+    .errors {
+      color: $error;
+      font-size: 1.8rem;
+      font-weight: 900;
+    }
+  }
+
+  .answers-list {
+    width: 100%;
+    margin-top: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .answer-feedback {
+      padding: 1.5rem 1rem;
+      background: white;
+      width: 80%;
+      max-width: 900px;
+      margin: 0.5rem;
+      border: 2px solid #eeeeee;
+      border-radius: 0.5rem;
+      position: relative;
+
+      .question {
+        padding-bottom: 1rem;
+        max-width: 90%;
+        font-size: 1.05rem;
+      }
+
+      strong {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: $success;
+
+        &.incorrect {
+          color: $error;
+        }
+      }
+
+      .answers {
+        display: flex;
+        .user-answer,
+        .correct-answer {
+          font-size: 1.1rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+        }
+
+        .user-answer {
+          &.correct svg {
+            color: $success;
+            margin-right: 0.2rem;
+          }
+
+          &.incorrect svg {
+            color: $error;
+            margin-right: 0.2rem;
+          }
+        }
+
+        .correct-answer {
+          margin-left: 1rem;
+
+          svg {
+            color: $success;
+            margin-right: 0.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  .main-page-btn {
+    margin-top: 2rem;
+    @include link-btn;
+  }
+}

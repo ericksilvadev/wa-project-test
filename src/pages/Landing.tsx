@@ -41,7 +41,7 @@ const Landing = () => {
         Quiz
       </h1>
       <main>
-        <h2>Select the amount of questions</h2>
+        <h2>Set the amount of questions</h2>
         <form onSubmit={formik.handleSubmit}>
           <TextField
             className="qty-input"
@@ -58,16 +58,14 @@ const Landing = () => {
             className="next-btn"
             variant="contained"
             type="submit"
-            disabled={
-              Boolean(formik.errors.quantity) || !formik.values.quantity
-            }
+            disabled={Boolean(formik.errors.quantity) || !formik.values.quantity}
           >
             Next
           </Button>
         </form>
         {lastScore && (
-          <Button variant="contained">
-            <Link to="game/resume">Last game</Link>
+          <Button variant="contained" className="latest-game">
+            <Link to="game/feedback">Latest game</Link>
           </Button>
         )}
       </main>

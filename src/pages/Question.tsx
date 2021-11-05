@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { QuizContext } from '../context/quiz';
-import { Header } from '../components';
 import { Button } from '@material-ui/core';
 import shuffleAnswers from '../helpers/shuffleAnswers';
 
@@ -12,7 +11,7 @@ interface IAnswers {
 }
 
 const Question = () => {
-  const [answers, setAnswers] = useState<IAnswers[]>();
+  const [answers, setAnswers] = useState<IAnswers[]>([]);
   const [showCorrect, setShowCorrect] = useState(false);
 
   const { id } = useParams();
@@ -22,20 +21,46 @@ const Question = () => {
   const question = questions[Number(id)];
 
   useEffect(() => {
-    setAnswers(
-      shuffleAnswers(question.incorrect_answers, question.correct_answer)
-    );
-    setShowCorrect(false);
+    console.log(question);
+    setAnswers(shuffleAnswers(question.incorrect_answers, question.correct_answer));
+
+    const storageAnswersJson = localStorage.getItem('score');
+    if (storageAnswersJson) {
+      const storageAnswers = JSON.parse(storageAnswersJson);
+      console.log(storageAnswers);
+
+      if (storageAnswers[Number(id)] && storageAnswers[Number(id)].question === question.question) {
+        setShowCorrect(true);
+        console.log(storageAnswers[Number(id)].question);
+        console.log(question.question);
+      } else {
+        // console.log(storageAnswers[Number(id)].question);
+        console.log(question.question);
+
+        setShowCorrect(false);
+      }
+    }
+    // setShowCorrect(false);
   }, [question]);
 
-  const handleAnswer = (answer: string, correct: boolean) => {
+  const handleAnswer = (question: string, answer: string, correct: boolean) => {
     setShowCorrect(true);
-    setUserAnswers([...userAnswers, { answer, correct }]);
+    const correctAnswer = answers.find((answer) => answer.correct);
+    if (correctAnswer) {
+      setUserAnswers([
+        ...userAnswers,
+        { question, answer, correct, correctAnswer: correctAnswer.answer },
+      ]);
+      console.log(userAnswers);
 
-    localStorage.setItem(
-      'score',
-      JSON.stringify([...userAnswers, { answer, correct }])
-    );
+      localStorage.setItem(
+        'score',
+        JSON.stringify([
+          ...userAnswers,
+          { question, answer, correct, correctAnswer: correctAnswer.answer },
+        ])
+      );
+    }
   };
 
   if (!answers || !answers.length) return <h1>loading</h1>;
@@ -54,23 +79,16 @@ const Question = () => {
               disabled={showCorrect}
               variant="contained"
               key={answer}
-              onClick={() => handleAnswer(answer, correct)}
+              onClick={() => handleAnswer(question.question, answer, correct)}
             >
               {answer}
             </Button>
           ))}
         </div>
-        <Button
-          className="next-btn"
-          variant="contained"
-          color="secondary"
-          disabled={!showCorrect}
-        >
+        <Button className="next-btn" variant="contained" color="secondary" disabled={!showCorrect}>
           <Link
             to={
-              Number(id) + 2 > questions.length
-                ? '/game/resume'
-                : `/game/question/${Number(id) + 1}`
+              Number(id) + 2 > questions.length ? '/game/feedback' : `/game/question/${Number(id) + 1}`
             }
           >
             Next

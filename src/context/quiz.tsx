@@ -14,8 +14,10 @@ interface IQuestions {
 }
 
 interface IUserAnswers {
+  question: string;
   answer: string;
   correct: boolean;
+  correctAnswer: string | undefined;
 }
 
 interface IQuizContext {
