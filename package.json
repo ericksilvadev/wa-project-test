@@ -1,8 +1,10 @@
 {
   "name": "wa-project-test",
   "version": "0.0.0",
+  "homepage": "https://ericksilvadev.github.io/wa-project-test/",
   "scripts": {
     "dev": "vite",
+    "deploy": "gh-pages -d build",
     "build": "tsc && vite build",
     "serve": "vite preview"
   },
@@ -13,6 +15,7 @@
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.24.0",
     "formik": "^2.2.9",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
     "react-router-dom": "^6.0.0",
