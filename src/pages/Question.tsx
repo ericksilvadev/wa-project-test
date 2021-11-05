@@ -21,22 +21,15 @@ const Question = () => {
   const question = questions[Number(id)];
 
   useEffect(() => {
-    console.log(questions);
     setAnswers(shuffleAnswers(question.incorrect_answers, question.correct_answer));
 
     const storageAnswersJson = localStorage.getItem('score');
     if (storageAnswersJson) {
       const storageAnswers = JSON.parse(storageAnswersJson);
-      console.log(storageAnswers);
 
       if (storageAnswers[Number(id)] && storageAnswers[Number(id)].question === question.question) {
         setShowCorrect(true);
-        console.log(storageAnswers[Number(id)].question);
-        console.log(question.question);
       } else {
-        // console.log(storageAnswers[Number(id)].question);
-        console.log(question.question);
-
         setShowCorrect(false);
       }
     }
@@ -51,7 +44,6 @@ const Question = () => {
         ...userAnswers,
         { question, answer, correct, correctAnswer: correctAnswer.answer },
       ]);
-      console.log(userAnswers);
 
       localStorage.setItem(
         'score',

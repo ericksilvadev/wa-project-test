@@ -20,7 +20,6 @@ const Feedback = () => {
     }
   }, []);
   const totalScore = answers.filter((answer) => answer.correct).length;
-  console.log(totalScore);
 
   return (
     <div className="feedback-page">
