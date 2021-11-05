@@ -6,6 +6,7 @@ import axios from 'axios';
 import * as yup from 'yup';
 
 import { QuizContext } from '../context/quiz';
+import decodeQuestions from '../helpers/decodeQuestions';
 import logo from '../images/logo.svg';
 
 const Landing = () => {
@@ -16,7 +17,10 @@ const Landing = () => {
 
   const fetchQuestions = async (qty: number | string) => {
     const { data } = await axios.get(`https://opentdb.com/api.php?amount=${qty}`);
-    setQuestions(data.results);
+    const questions = decodeQuestions(data.results);
+    console.log(questions);
+
+    setQuestions(questions);
   };
 
   const validationSchema = yup.object({

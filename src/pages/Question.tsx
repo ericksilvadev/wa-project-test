@@ -21,7 +21,7 @@ const Question = () => {
   const question = questions[Number(id)];
 
   useEffect(() => {
-    console.log(question);
+    console.log(questions);
     setAnswers(shuffleAnswers(question.incorrect_answers, question.correct_answer));
 
     const storageAnswersJson = localStorage.getItem('score');
