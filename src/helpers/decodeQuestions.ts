@@ -8,11 +8,7 @@ interface IQuestions {
 }
 
 const decodeQuestions = (questions: IQuestions[]) => {
-  console.log(questions);
-
   const parser = new DOMParser();
-
-  console.log(parser.parseFromString(questions[0].question, 'text/html').body.innerText);
 
   const decoded = questions.map(
     ({ category, type, difficulty, question, correct_answer, incorrect_answers }) => ({

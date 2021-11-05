@@ -9,9 +9,7 @@ const shuffleAnswers = (incorrect: string[], correct: string) => {
   // Create a random array from 0 to 3
 
   while (randomArray.length < answers.length) {
-    const randomNumber: number = Math.round(
-      Math.random() * (answers.length - 1)
-    );
+    const randomNumber: number = Math.round(Math.random() * (answers.length - 1));
 
     if (!randomArray.includes(+randomNumber)) {
       randomArray.push(+randomNumber);
