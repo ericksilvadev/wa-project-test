@@ -6,7 +6,7 @@
 
 Um jogo de perguntas e respostas sobre conhecimentos gerais, onde o usuário escolhe o número de perguntas que deseja responder e ao final recebe um relatório com o resumo do seu desempenho.
 
-Você pode acessar o projeto online [neste link](https://wa-project-test.vercel.app/)
+Você pode acessar o projeto online [neste link](https://ericksilvadev-wa-quiz.vercel.app/)
 
 ![Wa Quiz Exemplo pagina de pergunta](/src/images/waquiz.png)
 ![Wa Quiz Exemplo pagina de pergunta respondida](/src/images/waquiz-answer.png)
@@ -22,7 +22,7 @@ Você pode acessar o projeto online [neste link](https://wa-project-test.vercel.
 - [Formik](https://formik.org/docs/overview)
 - [yup](https://www.npmjs.com/package/yup)
 
-## Rodando localmente
+## Como rodar localmente
 
 ### 1. Clone este repositório
 
